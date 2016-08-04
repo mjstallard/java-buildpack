@@ -27,8 +27,5 @@ JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Compile failed with exceptio
   buildpack.compile
 end
 
-puts "BUILD DIR: #{build_dir}"
-puts "Downloading mysql client!"
-`apt-get download mysql-client`
-puts "Doing the dpkg dance!"
-`dpkg -i mysql-client.deb --force-not-root --root=#{build_dir}`
+`echo "#!/bin//bash\necho 'o shit waddup'" > #{build_dir}/custom_bp`
+`chmod +x #{build_dir}/custom_bp`
